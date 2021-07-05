@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- https://monkeylearn.com/blog/sentiment-analysis-of-twitter/ -->
+
+<!-- 
+	API Key: VrH8rSQ7e6PyJf8qTeUSsGMyw
+	API Secret Key: 8oj2W45fsU4T2WmQgIDLhAOMdiXVIXk4VZbu8jUr48JSD8wjK0
+
+	Access Token: 2895910574-93iYmkVhx6z3yNnP4dSvjQALAiLUI9wfbVx053I
+	Access Token Secret: D0dDR9sUaEPajD8iKFx1KuDn1SIJBjkGNEVIctWIB38J4
+ -->
+
+<div class="container mt-5">
+    <div class="row">
+		<div class="col-md-12">
+			<h3>{{ title }}</h3>
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-md-12">
+			<img src="{% static 'images/01.jpg' %}" alt="" class="w-100">
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-md-12">
+			<p>
+				Twitter allows businesses to engage personally with consumers. However, there’s so much data on Twitter that it can be hard for brands to prioritize mentions that could harm their business.
+			</p>
+			<p>
+				That's why sentiment analysis, a tool that automatically monitors emotions in conversations on social media platforms, has become a key instrument in social media marketing strategies.
+			</p>
+			<p>
+				Carefully listening to voice of the customer on Twitter using sentiment analysis allows companies to understand their audience, keep on top of what’s being said about their brand – and their competitors – and discover new trends in the industry.
+			</p>
+			<p>
+				Sentiment analysis is the automated process of identifying and classifying subjective information in text data. This might be an opinion, a judgment, or a feeling about a particular topic or product feature.
+			</p>
+			<p>
+				The most common type of sentiment analysis is ‘polarity detection’ and involves classifying statements as positive, negative or neutral. A polarity sentiment analysis model, for example, automatically tags this tweet as positive:
+			</p>
+			<p>
+				Sentiment analysis uses Natural Language Processing (NLP) to make sense of human language, and machine learning to automatically deliver accurate results.
+			</p>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Twitter Sentimental Analysis</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5 text-primary"><i class='bx bxl-twitter'></i> Twitter Sentimental Analysis</h1>
+
+        <nav class="mt-4">
+            <ul class="list-unstyled d-sm-inline-flex">
+                <li class="mr-2"><a href="{% url 'index' %}" class="btn btn-primary">Home</a></li>
+                <li class="mr-2"><a href="{% url 'live' %}" class="btn btn-primary">Live Tweets</a></li>
+                <li class="mr-2"><a href="{% url 'about' %}" class="btn btn-primary">About</a></li>
+                <li class="mr-2"><a href="{% url 'team' %}" class="btn btn-primary">team</a></li>
+                <li class="mr-2"><a href="{% url 'account-logout' %}" class="btn btn-danger">Logout</a></li>
+            </ul>
+        </nav>
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success'%}
+                <div class="text-success">{{message}}</div>
+                {% elif message.tags == 'error'%}
+                <div class="text-danger">{{message}}</div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="container mt-5 text-center">
+        <i class='bx bxl-twitter'></i> Twitter Sentimental Analysis<br>
+        &copy; Copyrights {% now 'Y'  %}<br>
+        Made by [Jeevan,Gaurav,Yusuf].
+    </footer>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

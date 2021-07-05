@@ -1,0 +1,29 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{% url 'admin-train' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h4>Do you want to train dataset and build the logical pickled model for the prediction?</h4>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <p class="mt-3">
+                        <span class="badge bg-danger">Note</span> This may take some time to process.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12 bg-primary text-light pt-3">
+            <h4 class="bg-primary p-2 text-light d-inline-block">Score</h4>
+            <p>
+                The score of Multinomial Navie Bayes is <span class="badge badge-primary">{{ score }}</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

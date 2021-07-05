@@ -1,0 +1,61 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+		<div class="col-md-12">
+			<h2>{{ title }}</h2>
+		</div>
+	</div>
+	
+	<div class="row mt-3">
+        <div class="col-md-4">
+            <form action="{% url 'index' %}" method="post">
+                {% csrf_token %}
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label>Tweet Text</label>
+                            <textarea name="tweet" id="tweet" placeholder="Copy and paste tweet over here" rows="10" required class="form-control">{{ tweet }}</textarea>
+                        </div>
+                        <div class="form-group mb-3">
+							<button type="submit" class="btn btn-primary"><i class='bx bxl-twitter'></i> Analyze</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<h4>Analysis Output</h4>
+					{% if prediction == 1 %}
+					<span class="lead badge bg-success">Positive</span>
+					{% endif %}
+					{% if prediction == 0 %}
+					<span class="lead badge bg-warning">Neutral</span>
+					{% endif %}
+					{% if prediction == -1 %}
+					<span class="lead badge bg-danger">Negative</span>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div class="row mt-5">
+		<div class="col-md-12">
+			<h4>What Is Sentiment Analysis?</h4>
+			<p>
+				Sentiment analysis is the automated process of identifying and classifying subjective information in text data. This might be an opinion, a judgment, or a feeling about a particular topic or product feature.
+			</p>
+			<p>
+				The most common type of sentiment analysis is ‘polarity detection’ and involves classifying statements as positive, negative or neutral. A polarity sentiment analysis model, for example, automatically tags this tweet as positive:
+			</p>
+			<a href="{% url 'about' %}">Know more..</a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

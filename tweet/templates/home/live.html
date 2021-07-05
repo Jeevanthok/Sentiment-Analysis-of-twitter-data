@@ -1,0 +1,92 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+		<div class="col-md-12">
+			<h3>{{ title }}</h3>
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-md-4">
+			<div class="card shadow">
+                <div class="card-body">
+                    <form action="{% url 'live' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="userid">User ID</label>
+                            <input type="text" required autocomplete="off" name="userid" id="userid" placeholder="Enter user's twitter username" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="tweets_no">No. of Tweets</label>
+                            <input type="number" required autocomplete="off" name="tweets_no" id="tweets_no" placeholder="Enter No. of Tweets to fetch" class="form-control">
+                        </div>
+                        <div class="form-group mb-3">
+							<button type="submit" class="btn btn-primary"><i class='bx bxl-twitter'></i> Analyze</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+		</div>
+
+        <div class="col-md-8">
+            <h4>Fetched {{ tweet_count }} tweets from @{{ user }} timeline</h4>
+            <p>Postive: {{ pos }} tweets</p>
+            <p>Negative: {{ neg }} tweets</p>
+            <p>Neutral: {{ neu }} tweets</p>
+        </div>
+
+        <div class="col-md-6 mt-5">
+            <h3>Tweets</h3>
+            {% for tweet in tweet_list %}
+            <div class="row">
+                <div class="col-md-12">
+                    <q>
+                        {{ tweet.text }}
+                    </q>
+                    <br>
+                    {% if tweet.predict == 1 %}
+					<span class="lead badge bg-success">Positive</span>
+					{% endif %}
+					{% if tweet.predict == 0 %}
+					<span class="lead badge bg-warning">Neutral</span>
+					{% endif %}
+					{% if tweet.predict == -1 %}
+					<span class="lead badge bg-danger">Negative</span>
+					{% endif %}
+                    <hr>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-6 mt-5">
+            <canvas id="myChart" height="200"></canvas>
+        </div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var my_chart = document.getElementById("myChart");
+
+    var barChart = new Chart(my_chart, {
+    type: 'bar',
+    data: {
+        labels: ["Positive", "Negative", "Neutral"],
+        datasets: [{
+        label: 'Sentiments',
+        data: [{{ pos }}, {{ neg }}, {{ neu }}],
+        backgroundColor: [
+            'rgb(76,175,80)',
+            'rgb(244,67,54)',
+            'rgb(255,235,59)'
+        ]
+        }]
+    }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Twitter Sentimental Analysis</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5 text-primary"><i class='bx bxl-twitter'></i> Twitter Sentimental Analysis</h1>
+
+		<div class="row">
+		<div class="col-md-12">
+			<h3>{{ title }}</h3>
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-md-12">
+			<img src="{% static 'images/01.jpg' %}" alt="" class="w-100">
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col-md-12">
+			<p>
+				Twitter allows businesses to engage personally with consumers. However, there’s so much data on Twitter that it can be hard for brands to prioritize mentions that could harm their business.
+			</p>
+			<p>
+				That's why sentiment analysis, a tool that automatically monitors emotions in conversations on social media platforms, has become a key instrument in social media marketing strategies.
+			</p>
+			<p>
+				Carefully listening to voice of the customer on Twitter using sentiment analysis allows companies to understand their audience, keep on top of what’s being said about their brand – and their competitors – and discover new trends in the industry.
+			</p>
+			<p>
+				Sentiment analysis is the automated process of identifying and classifying subjective information in text data. This might be an opinion, a judgment, or a feeling about a particular topic or product feature.
+			</p>
+			<p>
+				The most common type of sentiment analysis is ‘polarity detection’ and involves classifying statements as positive, negative or neutral. A polarity sentiment analysis model, for example, automatically tags this tweet as positive:
+			</p>
+			<p>
+				Sentiment analysis uses Natural Language Processing (NLP) to make sense of human language, and machine learning to automatically deliver accurate results.
+			</p>
+		</div>
+	</div>
+    </div>
+
+    <footer class="container mt-5 text-center">
+        <i class='bx bxl-twitter'></i> Twitter Sentimental Analysis<br>
+        &copy; Copyrights {% now 'Y'  %}<br>
+        Made by [Jeevan,Gaurav,Yusuf].
+    </footer>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>
